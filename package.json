@@ -1,0 +1,23 @@
+{
+  "name": "nasa-project",
+  "version": "1.0.0",
+  "description": "This is Nasa Mission Control project, where we can Launch a mission that includes potential habitable planets discovered by Kepler Telescope extracted from NASA Exoplanet Archive. If there is any issue found, we can also abort the mission which will be saved in history section",
+  "main": "index.js",
+  "scripts": {
+    "install-client":"npm install --prefix client",
+    "install-server":"npm install --prefix server",
+    "install":"concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "test": "concurrently \"cd client && npm test\" \"cd server && npm test\"",
+    "server": "npm run watch --prefix ./server",
+    "client": "npm start --prefix ./client",
+    "watch": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "npm run build --prefix client && npm start --prefix server",    
+    "deploy-cluster": "npm run build --prefix ./client && npm run cluster --prefix ./server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nasa-mission
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nasa-mission
+  template:
+    metadata:
+      labels:
+        app: nasa-mission
+    spec:
+      containers:
+        - name: nasa-mission
+          image: ritika93046/nasa-mission:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URL
+              value: mongodb://host.docker.internal:27017/nasa-mission
+              
