@@ -19,7 +19,5 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          env:
-            - name: MONGO_URL
-              value: mongodb://host.docker.internal:27017/nasa-mission
+       
               

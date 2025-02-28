@@ -1,0 +1,22 @@
+FROM jenkins/jenkins
+ 
+USER root
+ 
+# install docker
+RUN curl -fsSL https://get.docker.com | sh
+ 
+# see https://docs.docker.com/compose/install/
+RUN curl -L \
+  "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" \
+  -o /usr/local/bin/docker-compose \
+  && chmod +x /usr/local/bin/docker-compose
+ 
+ 
+# install kubectl
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
+  && chmod +x ./kubectl \
+  && mv ./kubectl /usr/local/bin/kubectl
+  
+  
+USER jenkins
+
